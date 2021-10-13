@@ -32,6 +32,7 @@ def evaluate(model, args, eval_loader, device, mix, x):
     model = model.to(device)
     model = model.double()
 
+    # Forward
     with torch.no_grad():
         F = []
         for batch_idx, (data, _) in enumerate(eval_loader):
@@ -42,10 +43,13 @@ def evaluate(model, args, eval_loader, device, mix, x):
         F = torch.cat(F, 0)
         F = F.cpu().numpy()
 
+    # Scatter plot the results
     for i in range(mix.shape[1]):
         plt.subplot(1, mix.shape[1], i+1)
+        # Plot the composition f\circ g
         plt.scatter(mix[:,i], visual_normalization(F[:,i]),
                 label='$\hat{f}_'+str(i+1)+'\circ g_'+str(i+1)+'$')
+        # Plot the generative function g
         plt.scatter(mix[:,i], visual_normalization(x[:,i]), label='$g_'+str(i+1)+'$')
 
         plt.xlabel('input',fontsize=20,fontweight='bold')

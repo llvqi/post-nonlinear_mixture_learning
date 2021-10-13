@@ -9,6 +9,7 @@ def loss_function(model, fx, qfx, x, idxes):
 
     tmp = torch.sum(fx, 1)-1.0
 
+    # Corresponding multiplier of the current batch
     mult = model.mult[idxes]
 
     reconstruct_err = loss(qfx, x) / x.shape[0]
