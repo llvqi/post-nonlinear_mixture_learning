@@ -19,5 +19,5 @@ Run command 'bash run_simplex_demo.sh' to generate Fig.1 in the paper.
 
 Tested on: python 3.5, PyTorch 1.1.0, cuda 9.0.
 
-![composition](figs/fig1.png)
+![composition](figs/fig1.PNG)
 
