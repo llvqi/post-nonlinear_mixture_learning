@@ -15,7 +15,7 @@ volume={69},
 pages={4921-4936}}
 ```
 
-Run command 'bash run_simplex_demo.sh' to generate results of Fig.4 in the paper.
+Run command 'bash run_simplex_demo.sh' to generate results of Fig. 4 in the paper.
 
 Tested on: python 3.5, PyTorch 1.1.0, cuda 9.0.
 
