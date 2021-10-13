@@ -28,16 +28,13 @@ class PNL(nn.Module):
     def __init__(self, input_dim, f_size, g_size, k, n_sample, rho, device):
         super().__init__()
 
-        # encoding
-        self.e_net = nn.ModuleList()
-        # decoding
-        self.d_net = nn.ModuleList()
         # input dimension
         self.in_dim = input_dim
         # latent dimension
         self.latent_dim = k
         # multiplier
         self.mult = torch.randn(n_sample, dtype=torch.double, device=device)
+        # rho
         self.rho = rho
 
         ## Encoding network
@@ -54,7 +51,6 @@ class PNL(nn.Module):
 
         # Output layer
         tmp.append(nn.Conv1d(f_size[-1]*self.in_dim, self.in_dim, 1, groups=self.in_dim))
-
         self.e_net = nn.Sequential(*tmp)
 
         # Unmixing layer
